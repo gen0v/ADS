@@ -14,46 +14,42 @@ List::~List()
 	( ... löschen Sie alle noch vorhandenen Knoten Node dieser Instanz 
 		Denken Sie auch den die Knoten head und tail.)
 	*/
-	Node *last_del = head;
 
-	while (head->next != NULL) {
-		//Solange es ein naechstes Element gibt gehe die Liste wieder durch
-		last_del = head;
-		while (last_del->next != NULL) {
-			//gehe die einzelnen Nodes durch und loesche
-			last_del = last_del->next;
-		}
-		//last_del ist das letzte Element
-		if(last_del->prev != NULL) last_del->prev->next = NULL;
-		delete last_del;
-		
+	while (head->next != tail) {
+	Node *temp = head;
+	head = head->next;
+	delete temp;
 	}
 	//head ist das letzte Element
 	_size = 0;
 	delete head;
+	delete tail;
 }
 void List::InsertFront(int key)
 {
 
 //	( ... Erweitern Sie die Methode so, dass ein neür Knoten Node vorne
 //		(hinter dem Knoten head) in die Liste eingefügt wird. )
-	Node *newNode = new Node(key,NULL,head);
-	if (head->next == NULL) {
-		//head next ist null
+	Node *newNode = new Node(key,head->next,head);
+	if (head->next == tail) {
+		//head next ist tail
 		head->next = newNode;
 		newNode->prev = head;
+		newNode->next = tail;
+		tail->prev = newNode;
 	}
-	else if(head->next->next == NULL){
-		//head next next ist null
+/*	else if(head->next->next == tail){
+		//head next next ist tail
 		newNode->next = head->next;
 		head->next->prev = newNode;
 		head->next = newNode;
 
-	}
+	}*/
 	else {
 		newNode->next = head->next;
-		head->next->next->prev = newNode;
+		head->next->prev = newNode;
 		head->next = newNode;
+		newNode->prev = head;
 	}
 	_size++;
 }
@@ -71,25 +67,19 @@ bool List::getFront(int & key)
 //	( ... Erweitern Sie die Methode so, dass der erste Knoten der Liste
 //		(hinter head) zurückgegeben und dieser Knoten dann gelöscht wird.
 //		Im Erfolgsfall geben Sie true zurück, sonst false. )
-	if (head->next == NULL) return false;
+//	if (_size == 0) return false;
+	if (_size == 0) {
+		//std::cout << "BLABLA222222" << key;
+		return false;
+	}
 	else {
 		//Key zuruckgeben
 		key = head->next->key;
+		std::cout << "BLABLA" << key;
 		//Knoten loeschen
-		Node *temp = head->next;
-		if (head->next->next != NULL) {
-			head->next->next->prev = head;
-			head->next = head->next->next;
-		}
-		else {
-			//head next = tail
-			head->next = NULL;
-			tail->prev = NULL;
-			tail = head;
-		}
-		delete temp;
+		del(key);
 		return true;
-		//???
+
 	}
 }
 bool List::getBack(int & key)
@@ -97,25 +87,20 @@ bool List::getBack(int & key)
 //	(... Erweitern Sie die Methode so, dass der letzte Knoten der Liste
 //		(vor tail) zurückgegeben und dieser Knoten dann gelöscht wird.
 //		Im Erfolgsfall geben Sie true zurück, sonst false. )
-	if (tail->prev == NULL) return false;
+	if (_size == 0 || tail->prev == head) {
+		//std::cout << "BLABLA222222" << key;
+		return false;
+	}
 	else {
 		//Key geben
 		key = tail->prev->key;
+//		std::cout << "TEST..." << tail->prev->key<<std::endl;
 		//Knoten loeschen
-		Node *temp = tail->prev;
-		if (tail->prev->prev != NULL) {
-			tail->prev->prev->next = tail;
-			tail->prev = tail->prev->prev;
+		if (del(key)) {
+			//std::cout << "FEHLER beim loeschen...";
+			return true;
 		}
-		else if(tail->prev == head){
-			//tail new Head
-			tail->prev = NULL;
-			head->next = NULL;
-			head = tail;
-		}
-		delete temp;
-		return true;
-		//???
+
 	}
 }
 bool List::del(int key)
@@ -123,9 +108,11 @@ bool List::del(int key)
 //	(... Die Methode del sucht den Knoten mit dem Wert Key und löscht diesen
 //		im Erfolgsfall aus der Liste.
 //		Im Erfolgsfall geben Sie true zurück, sonst false. )
-	Node *point = head;
-	while (point->next != NULL && point->next != tail) {
+	if (_size == 0) return false;
+	Node *point = head->next;
+	while (point != tail) {
 		//Solange next nicht null oder tail gehe durch und suche
+
 		if (point->key == key) {
 			//loesche Knoten point
 			point->prev->next = point->next;
@@ -167,34 +154,48 @@ bool List::swap(int key1, int key2)
 		Node *point1 = head;
 		Node *point2 = head;
 		//Suche keys
-		while (point1->next) {
+		while (point1->next != NULL && point1->next != tail) {
+			//Solange next nicht null oder tail gehe durch und suche
 			if (point1->key == key1) {
-				//key 1 gefunden
-			}
-			if (point2->key == key2) {
-				//key 2 gefunden
+				break;
 			}
 			point1 = point1->next;
+		}
+		while (point2->next != NULL && point2->next != tail) {
+			//Solange next nicht null oder tail gehe durch und suche
+			if (point2->key == key2) {
+				break;
+			}
 			point2 = point2->next;
-
 		}
 		//Tausche Knoten
 		Node *temp = point1->prev;
 		//[][][][P][X][][]
-		point1->next->prev = point2;
-		point2->next->prev = point1;
+		if(point1->next != nullptr) point1->next->prev = point2;
+		if(point2->next != nullptr) point2->next->prev = point1;
 		//[][][X][P][][][]
-		point1->prev->next = point2;
-		point2->prev->next = point1;
+		if(point1->prev != nullptr) point1->prev->next = point2;
+		if(point2->prev != nullptr) point2->prev->next = point1;
 		//[][][X][P][][][]
 		//[][][Y][P][][][]
-		point1->prev = point2->prev;
-		point2->prev = temp;
+		if (point1->prev != nullptr && point2->prev != nullptr) {
+			point1->prev = point2->prev;
+			point2->prev = temp;
+		}
+		else if (point1->prev == nullptr && point2->prev != nullptr) point1->prev = point2->prev;
+		else if (point1->prev != nullptr && point2->prev == nullptr) point2->prev = point1->prev;
 		//[][][][P][X][][]
 		//[][][][P][Y][][]
 		temp = point1->next;
-		point1->next = point2->next;
-		point2->next = temp;
+		if (point1->next != nullptr && point2->next != nullptr) {
+			point1->next = point2->next;
+			point2->next = temp;
+		}
+		else if (point1->next == nullptr && point2->next != nullptr) point1->next = point2->next;
+		else if (point1->next != nullptr && point2->next == nullptr) point2->next = point1->next;
+		
+		
+
 		//Alles fertig
 		return true;
 	}

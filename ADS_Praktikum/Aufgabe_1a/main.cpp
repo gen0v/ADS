@@ -17,6 +17,7 @@ int main(void)
 	cout << "100: " << (MyList.search(100) ? "gefunden" : "nicht gefunden") << endl;
 	cout << "99: " << (MyList.search(99) ? "gefunden" : "nicht gefunden") << endl << endl;
 
+
 	while (MyList.getBack(i))
 		cout << i << " ";
 	cout << endl << endl;

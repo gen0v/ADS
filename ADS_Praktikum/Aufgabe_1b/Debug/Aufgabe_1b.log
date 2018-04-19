@@ -1,2 +1,3 @@
 ﻿  main.cpp
+c:\users\eugen\source\repos\ads_praktikum\ads_praktikum\aufgabe_1b\list.h(153): warning C4715: 'List<float>::getBack': not all control paths return a value
   Aufgabe_1b.vcxproj -> C:\Users\Eugen\source\repos\ADS_Praktikum\ADS_Praktikum\Debug\Aufgabe_1b.exe

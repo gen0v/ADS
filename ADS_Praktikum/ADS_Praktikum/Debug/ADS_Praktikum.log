@@ -1,7 +1,2 @@
-﻿  Node.cpp
-c1xx : fatal error C1083: Cannot open source file: 'Node.cpp': No such file or directory
-  main.cpp
-c1xx : fatal error C1083: Cannot open source file: 'main.cpp': No such file or directory
-  List.cpp
-c1xx : fatal error C1083: Cannot open source file: 'List.cpp': No such file or directory
-  Generating Code...
+﻿  main.cpp
+  ADS_Praktikum.vcxproj -> C:\Users\Eugen\source\repos\ADS_Praktikum\ADS_Praktikum\Debug\Aufgabe_1a.exe
