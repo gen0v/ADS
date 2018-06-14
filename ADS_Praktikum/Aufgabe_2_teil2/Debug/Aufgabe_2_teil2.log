@@ -1,10 +1,1 @@
-﻿  TreeNode.cpp
-c:\users\eugen\source\repos\ads_praktikum\ads_praktikum\aufgabe_2_teil2\treenode.cpp(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
-  Compiling...
-  Tree.cpp
-  Generating Code...
-c:\users\eugen\source\repos\ads_praktikum\ads_praktikum\aufgabe_2_teil2\tree.cpp(86): warning C4715: 'Tree::search': not all control paths return a value
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Aufgabe_2_teil2.vcxproj -> C:\Users\Eugen\source\repos\ADS_Praktikum\ADS_Praktikum\Debug\Aufgabe_2_teil2.exe
+﻿

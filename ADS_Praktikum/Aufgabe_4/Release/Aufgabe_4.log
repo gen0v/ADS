@@ -1,0 +1,49 @@
+﻿  Graph.cpp
+Graph.cpp(18): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(55): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(56): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(97): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(182): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(237): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(240): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(294): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(337): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(361): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(281): warning C4101: 'reverse': unreferenced local variable
+Graph.cpp(425): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(468): warning C4018: '<': signed/unsigned mismatch
+Graph.cpp(561): warning C4018: '<': signed/unsigned mismatch
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.12.25827\include\xutility(1316): error C2679: binary '=': no operator found which takes a right-hand operand of type 'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>' (or there is no acceptable conversion)
+          with
+          [
+              _Ty=GraphNode *
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.12.25827\include\list(364): note: could be 'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>> &std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>::operator =(std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>> &&)'
+          with
+          [
+              _Ty=Graph::sedge
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.12.25827\include\list(364): note: or       'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>> &std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>::operator =(const std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>> &)'
+          with
+          [
+              _Ty=Graph::sedge
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.12.25827\include\xutility(1316): note: while trying to match the argument list '(std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>, std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>)'
+          with
+          [
+              _Ty=Graph::sedge
+          ]
+          and
+          [
+              _Ty=GraphNode *
+          ]
+  Graph.cpp(430): note: see reference to function template instantiation 'std::reverse_iterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>> &std::reverse_iterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>>::operator =<std::_List_iterator<std::_List_val<std::_List_simple_types<GraphNode*>>>>(const std::reverse_iterator<std::_List_iterator<std::_List_val<std::_List_simple_types<GraphNode*>>>> &)' being compiled
+          with
+          [
+              _Ty=Graph::sedge
+          ]
+  Graph.cpp(430): note: see reference to function template instantiation 'std::reverse_iterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>> &std::reverse_iterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>>::operator =<std::_List_iterator<std::_List_val<std::_List_simple_types<GraphNode*>>>>(const std::reverse_iterator<std::_List_iterator<std::_List_val<std::_List_simple_types<GraphNode*>>>> &)' being compiled
+          with
+          [
+              _Ty=Graph::sedge
+          ]
